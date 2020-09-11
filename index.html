@@ -83,30 +83,42 @@
     <script>
         async function subscribe(){
             function showNotification() {
-            const notification = new Notification("New Message from Peach Clothing.", {
-                body:"Thank you for subscribing our newsletter.",
-                icon :"peach.png"
-            });
+                async function getSubName(){
+                    
+                    var text = document.getElementById("sub-email").value;
 
-            notification.onclick = (e) =>{
-                window.location.href ="https://izzych.github.io/peachclothing.github.io/://google.com";
+                    return text;
+                }
+
+                var subName = new Notification();
+                subName = ("New Message from Peach Clothing.",{
+                    body:"getSubName()",
+                    icon:"./img/peach.png"
+                });
+
+                const notification = new Notification("New Message from Peach Clothing.", {
+                    body:"Thank you for subscribing our newsletter.",
+                    icon :"./img/peach.png"
+                });
+                notification.onclick = (e) =>{
+                    window.location.href ="https://izzych.github.io/peachclothing.github.io/://google.com";
+                }
+            }
+
+
+
+            console.log(Notification.permission);
+
+            if(Notification.permission === "granted"){
+                showNotification();
+            } else if (Notification.permission !== "denied"){
+                Notification.requestPermission().then(permission=>{
+                    if(permission ==="granted"){
+                        showNotification();
+                    }
+                });
             }
         }
-
-
-
-        console.log(Notification.permission);
-
-        if(Notification.permission === "granted"){
-            showNotification();
-        } else if (Notification.permission !== "denied"){
-            Notification.requestPermission().then(permission=>{
-                if(permission ==="granted"){
-                    showNotification();
-                }
-            });
-        }
-    }
     </script>
 
     <!--Notification API End-->
@@ -484,7 +496,7 @@
                 <div class="row">
                     <div>
                         <form action="subscribe()">
-                            <input type="text" placeholder="Your email address">
+                            <input id="sub-email" type="text" placeholder="Your email address">
                             <button type="submit">Subscribe to our newsletter</button>
                         </form>
                     </div>
