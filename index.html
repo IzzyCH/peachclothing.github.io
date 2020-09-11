@@ -78,16 +78,9 @@
         }
     </script>
 
-    <script>
+    <!--script>
          async function subscribe(){
-            let sw = await navigator.serviceWorker.ready;
-            let push = await sw.pushManager.subscribe({
-                userVisibleOnly: true,
-                applicationServerKey:'BOOK6Sd8tPkCMHlJFMpppXArSYiFtuA5RfuEoGd5qrme7-nOl7oUwBKBURK_0tn9ttj8sxdhD3v90xXVpcUfWcA'
-            })
-            console.log(JSON.stringify(push));
-
-
+           
             if (confirm("Subscribe to our newsletter?")) {
                 window.alert("Thank you for subscribing to our newsletter! :)");
             } 
@@ -96,12 +89,15 @@
                window.alert("Hope you enjoy! :(");
             }
         }
-    </script>
+    </script-->
+
+    <!--Notification API Begin-->
 
 
-    <!--script>
-        function showNotification() {
-            const notification = new Notification("You have subscribed to our newsletter.", {
+    <script>
+        async function subscribe(){
+            function showNotification() {
+            const notification = new Notification("Message from Peach Clothing.", {
                 body:"Thank you for subscribing our newsletter.",
                 icon :"peach.png"
             });
@@ -113,7 +109,6 @@
 
 
 
-
         console.log(Notification.permission);
 
         if(Notification.permission === "granted"){
@@ -121,14 +116,17 @@
         } else if (Notification.permission !== "denied"){
             Notification.requestPermission().then(permission=>{
                 if(permission ==="granted"){
-                showNotification();
+                    showNotification();
                 }
             });
         }
-    </script-->
+    }
+    </script>
+
+    <!--Notification API End-->
 
 
-    
+  
     <!-- Search model -->
 	<div class="search-model">
 		<div class="h-100 d-flex align-items-center justify-content-center">
