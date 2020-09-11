@@ -86,25 +86,19 @@
                 applicationServerKey:'BOOK6Sd8tPkCMHlJFMpppXArSYiFtuA5RfuEoGd5qrme7-nOl7oUwBKBURK_0tn9ttj8sxdhD3v90xXVpcUfWcA'
             })
             console.log(JSON.stringify(push));
-            subsc();
-           
-        }
-    </script>
 
-<p id="subsc"></p>
-<script>
-      function subsc(){
-            var txt;
+
             if (confirm("Subscribe to our newsletter?")) {
-                txt = "Thank you for subscribing to our newsletter! :)";
+                alert("Thank you for subscribing to our newsletter! :)");
             } 
             else 
             {
-                txt = "Hope you enjoy! :(";
+               alert("Hope you enjoy! :(");
             }
-            document.getElementById("subsc").innerHTML = txt;
         }
-</script>
+    </script>
+
+
     <!--script>
         function showNotification() {
             const notification = new Notification("You have subscribed to our newsletter.", {
