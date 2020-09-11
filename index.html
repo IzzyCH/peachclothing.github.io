@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<META HTTP-EQUIV='Content-Security-Policy' CONTENT="default-src 'self' ; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' *; media-src 'self' ; frame-src;">
+
 <html lang="en">
 
 <head>
@@ -28,7 +30,7 @@
     <link rel="manifest" href="./manifest.webmanifest">
 </head>
 
-<
+
 
 
 <body>
@@ -52,7 +54,7 @@
             function showNotification() {
             const notification = new Notification("New Message from Peach Clothing.", {
                 body:"Thank you for subscribing our newsletter.",
-                icon :"peach.png"
+                icon :"/img/peach.png"
             });
 
             notification.onclick = (e) =>{
