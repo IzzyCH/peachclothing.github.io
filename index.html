@@ -78,7 +78,7 @@
         }
     </script>
 
-
+<p id="subsc"></p>
     <script>
          async function subscribe(){
             let sw = await navigator.serviceWorker.ready;
@@ -88,7 +88,14 @@
             })
             console.log(JSON.stringify(push));
 
-            window.alert("Thank you for subscribing to our newsletter");
+            var txt;
+            if (confirm("Subscribe to our newsletter?")) {
+             txt = "hank you for subscribing to our newsletter! :)";
+            } else {
+               txt = "Hope you enjoy! :(";
+              }
+            document.getElementById("demo").innerHTML = txt;
+           
         }
     </script>
 
