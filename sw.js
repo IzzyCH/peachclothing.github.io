@@ -12,13 +12,19 @@ const staticAssets = [
 
 ]
 
+self.addEventListener('install', function(e) {
+    e.waitUntil(
+        caches.open('cacheName').then(function(cache){
+            return cache.addAll(staticAssets)
+        })
+    );
+});
 
-
-self.addEventListener('install', async e => {
+/*self.addEventListener('install', async e => {
     const cache = await caches.open(cacheName);
     await cache.addAll(staticAssets);
     return self.skipWaiting();
-});
+});*/
 
 self.addEventListener('activate', e => {
     self.clients.claim();
