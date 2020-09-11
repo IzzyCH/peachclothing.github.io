@@ -94,7 +94,7 @@
             function showNotification() {
                 async function getSubName(){
                     
-                    var text = document.getElementById("sub-email").value;
+                    var text = document.getElementByTagName("input")[0].value;
 
                     return text;
                 }
@@ -505,7 +505,7 @@
                 <div class="row">
                     <div>
                         <form action="subscribe()">
-                            <input id="sub-email" type="text" placeholder="Your email address">
+                            <input type="text" placeholder="Your email address">
                             <button type="submit">Subscribe to our newsletter</button>
                         </form>
                     </div>
