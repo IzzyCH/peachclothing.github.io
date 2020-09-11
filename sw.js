@@ -71,7 +71,7 @@ self.addEventListener('push', function(e) {
             },
             {   
                 action: 'close',
-                title="Close", 
+                title:"Close", 
                 icon:'peach.png'
             }
         ]
