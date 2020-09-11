@@ -78,32 +78,18 @@
         }
     </script>
 
-    <!--script>
-         async function subscribe(){
-           
-            if (confirm("Subscribe to our newsletter?")) {
-                window.alert("Thank you for subscribing to our newsletter! :)");
-            } 
-            else 
-            {
-               window.alert("Hope you enjoy! :(");
-            }
-        }
-    </script-->
-
+ 
     <!--Notification API Begin-->
-
-
     <script>
         async function subscribe(){
             function showNotification() {
-            const notification = new Notification("Message from Peach Clothing.", {
+            const notification = new Notification("New Message from Peach Clothing.", {
                 body:"Thank you for subscribing our newsletter.",
                 icon :"peach.png"
             });
 
             notification.onclick = (e) =>{
-                window.location.href ="https://google.com";
+                window.location.href ="https://izzych.github.io/peachclothing.github.io/://google.com";
             }
         }
 
@@ -284,7 +270,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="single-box-item first-box">
-                                    <img src="fbox1.jpg" alt="">
+                                    <img src="./img/fbox1.jpg" alt="">
                                     <div class="box-text">
                                         <span class="trend-year">New Arrival</span>
                                         <h2>Female</h2>
@@ -295,7 +281,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="single-box-item second-box">
-                                    <img src="fbox2.jpg" alt="">
+                                    <img src="./img/fbox2.jpg" alt="">
                                     <div class="box-text">
                                         <span class="trend-year">New Arrival</span>
                                         <h2>Male</h2>
@@ -308,7 +294,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="single-box-item large-box">
-                            <img src="fbox3.jpg" alt="">
+                            <img src="./img/fbox3.jpg" alt="">
                             <div class="box-text">
                                 <span class="trend-year">2020 Party</span>
                                 <h2>Collection</h2>
@@ -460,7 +446,7 @@
                 </div>
                 <div class="col-lg-5 offset-lg-1">
                     <div class="lookbok-pic">
-                        <img src="fbox4.jpg" height="200" width="200" alt="">  
+                        <img src="./img/fbox4.jpg" height="200" width="200" alt="">  
                     </div>
                 </div>
             </div>
@@ -497,10 +483,10 @@
             <div class="newslatter-form">
                 <div class="row">
                     <div>
-                        <div action="#">
-                            <input class="my-input-box" type="text" placeholder="Your email address">
-                            <button class="my-button" type="submit" onclick="subscribe()">Subscribe to our newsletter</button>
-                        </div>
+                        <form action="subscribe()">
+                            <input type="text" placeholder="Your email address">
+                            <button type="submit">Subscribe to our newsletter</button>
+                        </form>
                     </div>
                 </div>
             </div>
