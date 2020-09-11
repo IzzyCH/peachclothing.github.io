@@ -1,0 +1,20 @@
+{
+    "name": "Peach Clothing Website",
+    "short_name": "Peach Clothing",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "A Clothing Website",
+    "icons" : [
+        {
+            "src": "peach.png",
+            "sizes": "256x256",
+            "type" : "image/png"
+        },
+        {
+            "src": "peachword.png",
+            "sizes": "807x172",
+            "type" : "image/png"
+        }
+    ]
+}

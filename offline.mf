@@ -1,0 +1,3 @@
+CACHE MANIFEST
+/offline_site/style.css
+/offline_site/peach.png
