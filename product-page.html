@@ -2,12 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Yoga Studio Template">
-    <meta name="keywords" content="Yoga, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Peach Clothing</title>
+    <META HTTP-EQUIV='Content-Security-Policy' CONTENT="default-src 'self' *; script-src 'self' 'unsafe-inline' *; style-src 'self' 'unsafe-inline' *; img-src 'self' *; media-src 'self' *; frame-src *;">
+        <meta charset="UTF-8">
+        <meta name="description" content="Peach Clothing Website">
+        <meta name="keywords" content="Peach, Clothing, Fashion">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Peach Clothing</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
@@ -23,9 +24,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="style.css" type="text/css">
 
-    <link rel="tab icon" type="image/png" href="https://icons.iconarchive.com/icons/google/noto-emoji-food-drink/256/32352-peach-icon.png">
+    <link rel="tab icon" type="image/png" href="peach.png">
     
+    <link rel="manifest" href="./manifest.webmanifest">
+
 </head>
+
+<style type="text/css">
+
+    .my-input-box {
+        width: 100%;
+        border: 2px solid #454747;
+        border-radius: 50px;
+        height: 53px;
+        background: transparent;
+        color: #535353;
+        font-size: 14px;
+        font-style: italic;
+        font-weight: 600;
+        padding-left: 30px;
+        position: relative;
+    }
+    
+    .my-button {
+        width: 310px;
+        height: 53px;
+        background: #B0BCC2;
+        border: 2px solid #B0BCC2;
+        color: #fff;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 50px;
+        position: absolute;
+    }
+</style>
+
+
 
 <body>
     <!-- Page Preloder -->
@@ -33,6 +69,106 @@
         <div class="loader"></div>
     </div>
     
+    <script>
+        var userCartInfo = [];
+
+        var product1_info = new Object();
+        product1_info.price = 22.90;
+        if (product1_info.qty != 0) {
+            product1_info.qty = 0;
+        }
+        userCartInfo.push(product1_info);
+
+        var product2_info = new Object();
+        product2_info.price = 29.90;
+        if (product2_info.qty != 0) {
+            product2_info.qty = 0;
+        }
+        userCartInfo.push(product2_info);
+
+        var product3_info = new Object();
+        product3_info.price = 29.90;
+        if (product3_info.qty != 0) {
+            product3_info.qty = 0;
+        }
+        userCartInfo.push(product3_info);
+
+        var product4_info = new Object();
+        product4_info.price = 15.90;
+        if (product4_info.qty != 0) {
+            product4_info.qty = 0;
+        }
+        userCartInfo.push(product4_info);
+
+        var product5_info = new Object();
+        product5_info.price = 22.90;
+        if (product5_info.qty != 0) {
+            product5_info.qty = 0;
+        }
+        userCartInfo.push(product5_info);
+
+        var product6_info = new Object();
+        product6_info.price = 26.90;
+        if (product6_info.qty != 0) {
+            product6_info.qty = 0;
+        }
+        userCartInfo.push(product6_info);
+
+        var product7_info = new Object();
+        product7_info.price = 19.90;
+        if (product7_info.qty != 0) {
+            product7_info.qty = 0;
+        }
+        userCartInfo.push(product7_info);
+
+        var product8_info = new Object();
+        product8_info.price = 33.90;
+        if (product8_info.qty != 0) {
+            product8_info.qty = 0;
+        }
+        userCartInfo.push(product8_info);
+
+        var coupunExist = false;
+        userCartinfo.push(coupunExist);
+        if (localStorage.getItem('userCartInfo') == null) {
+            localStorage.setItem('userCartInfo', JSON.stringify(userCartInfo));
+        }
+    </script>
+
+    
+ <!--Notification API Begin-->
+ <script>
+    async function subscribe(){
+        function showNotification() {
+        const notification = new Notification("New Message from Peach Clothing.", {
+            body:"Thank you for subscribing our newsletter.",
+            icon :"peach.png"
+        });
+
+        notification.onclick = (e) =>{
+            window.location.href ="https://izzych.github.io/peachclothing.github.io/";
+        }
+        window.alert("Thank you for subscribing to our newsletter! :)");
+    }
+
+
+
+    console.log(Notification.permission);
+
+    if(Notification.permission === "granted"){
+        showNotification();
+    } else if (Notification.permission !== "denied"){
+        Notification.requestPermission().then(permission=>{
+            if(permission ==="granted"){
+                showNotification();
+            }
+        });
+    }
+}
+</script>
+
+<!--Notification API End-->
+
     <!-- Search model -->
 	<div class="search-model">
 		<div class="h-100 d-flex align-items-center justify-content-center">
@@ -116,10 +252,9 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="page-breadcrumb">
-                        <h2>Shirts<span>.</span></h2>
+                        <h2>Dresses<span>.</span></h2>
                         <a href="#">Home</a>
-                        <a href="#">Dresses</a>
-                        <a class="active" href="#">Night Dresses</a>
+                        <a href="#" class="active">Women</a>
                     </div>
                 </div>
                 <div class="col-lg-8">
@@ -130,143 +265,129 @@
     </section>
     <!-- Page Add Section End -->
 
-    <!-- Product Page Section Beign -->
-    <section class="product-page">
-        <div class="container">
-            <div class="product-control">
-                <a href="#">Previous</a>
-                <a href="#">Next</a>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="product-slider owl-carousel">
-                        <div class="product-img">
-                            <figure>
-                                <img src="img/product/product-1.jpg" alt="">
-                                <div class="p-status">new</div>
-                            </figure>
-                        </div>
-                        <div class="product-img">
-                            <figure>
-                                <img src="img/product/product-1.jpg" alt="">
-                                <div class="p-status">new</div>
-                            </figure>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="col-lg-6">
-                    <div class="product-content">
-                        <h2>Dotted Blue Shirt</h2>
-                        <div class="pc-meta">
-                            <h5>$22.90</h5>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-                            viverra maecenas accumsan lacus vel facilisis.</p>
-                        <ul class="tags">
-                            <li><span>Category :</span> Men’s Wear</li>
-                            <li><span>Tags :</span> man, shirt, dotted, elegant, cool</li>
-                        </ul>
-                        <div class="product-quantity">
-                            <div class="pro-qty">
-                                <input type="text" value="1">
-                            </div>
-                        </div>
-                        <a href="#" class="primary-btn pc-btn">Add to cart</a>
-                        <ul class="p-info">
-                            <li>Product Information</li>
-                            <li>Reviews</li>
-                            <li>Product Care</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Product Page Section End -->
 
-    <!-- Related Product Section Begin -->
-    <section class="related-product spad">
+ <!-- Latest Product Begin -->
+    <section class="latest-products spad">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-title">
-                        <h2>Related Products</h2>
+            <div class="product-filter">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="section-title">
+                            <h2>Latest Products</h2>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-product-item">
+            <div class="row" id="product-list">
+                <div class="col-lg-3 col-sm-6 mix all dresses bags">
+                    <div class="single-product-item card">
                         <figure>
-                            <a href="#"><img src="img/products/img-1.jpg" alt=""></a>
-                            <div class="p-status">new</div>
+                            <a href="product-detail1.html"><img src="img/products/img-1.jpg" alt="product-detail-1"></a>
+                            <div class="p-status">NEW</div>
                         </figure>
                         <div class="product-text">
-                            <h6>Green Dress with details</h6>
-                            <p>$22.90</p>
+                            <h6>Jacket - Blue</h6>
+                            <p>RM22.90</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-product-item">
+                <div class="col-lg-3 col-sm-6 mix all dresses bags">
+                    <div class="single-product-item card">
                         <figure>
-                            <a href="#"><img src="img/products/img-2.jpg" alt=""></a>
-                            <div class="p-status sale">sale</div>
+                            <a href="product-detail2.html"><img src="img/products/img-2.jpg" alt=""></a>
+                            <div class="p-status sale">HOT</div>
                         </figure>
                         <div class="product-text">
-                            <h6>Yellow Maxi Dress</h6>
-                            <p>$25.90</p>
+                            <h6>Maxi Dress - Yellow</h6>
+                            <p>RM29.90</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-product-item">
+                <div class="col-lg-3 col-sm-6 mix all shoes accesories">
+                    <div class="single-product-item card">
                         <figure>
-                            <a href="#"><img src="img/products/img-3.jpg" alt=""></a>
-                            <div class="p-status">new</div>
+                            <a href="product-detail3.html"><img src="img/products/img-3.jpg" alt=""></a>
+                            <div class="p-status">NEW</div>
                         </figure>
                         <div class="product-text">
-                            <h6>One piece bodysuit</h6>
-                            <p>$19.90</p>
+                            <h6>Casual Suit Jacket - Black</h6>
+                            <p>RM29.90</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-product-item">
+                <div class="col-lg-3 col-sm-6 mix all shoes accesories">
+                    <div class="single-product-item card">
                         <figure>
-                            <a href="#"><img src="img/products/img-4.jpg" alt=""></a>
-                            <div class="p-status popular">popular</div>
+                            <a href="product-detail4.html"><img src="img/products/img-4.jpg" alt=""></a>
+                            <div class="p-status popular">SALE</div>
                         </figure>
                         <div class="product-text">
-                            <h6>Blue Dress with details</h6>
-                            <p>$35.50</p>
+                            <h6>Plain Color Dress - Light Blue</h6>
+                            <p>RM15.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all dresses shoes">
+                    <div class="single-product-item card">
+                        <figure>
+                            <a href="product-detail5.html"><img src="img/products/img-5.jpg" alt=""></a>
+                            <div class="p-status">NEW</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>Stripped Sleeve-less Dress</h6>
+                            <p>RM22.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all accesories bags">
+                    <div class="single-product-item card">
+                        <figure>
+                            <a href="product-detail6.html"><img src="img/products/img-15.jpg" alt=""></a>
+                            <div class="p-status sale">HOT</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>Strapless Sweater - Peach</h6>
+                            <p>RM26.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all accesories bags">
+                    <div class="single-product-item card">
+                        <figure>
+                            <a href="product-detail7.html"><img src="img/products/img-8.jpg" alt=""></a>
+                            <div class="p-status sale">HOT</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>Dress with Details - Blue</h6>
+                            <p>RM19.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all accesories bags">
+                    <div class="single-product-item card">
+                        <figure>
+                            <a href="product-detail8.html"><img src="img/products/img-10.jpg" alt=""></a>
+                            <div class="p-status">NEW</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>Jacket with Details - Blue</h6>
+                            <p>RM33.90</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Related Product Section End -->
+    <!-- Latest Product End -->
 
         <!-- Footer Section Begin -->
         <footer class="footer-section spad">
             <div class="container">
                 <div class="newslatter-form">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <form action="#">
-                                <input type="text" placeholder="Your email address">
-                                <button type="submit">Subscribe to our newsletter</button>
-                            </form>
+                        <div action="#">
+                            <input class="my-input-box" type="text" placeholder="Your email address">
+                            <button class="my-button" type="submit" onclick="subscribe()">Subscribe to our newsletter</button>
                         </div>
                     </div>
                 </div>

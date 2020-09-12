@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
+    <META HTTP-EQUIV='Content-Security-Policy' CONTENT="default-src 'self' *; script-src 'self' 'unsafe-inline' *; style-src 'self' 'unsafe-inline' *; img-src 'self' *; media-src 'self' *; frame-src *;">
     <meta charset="UTF-8">
-    <meta name="description" content="Yoga Studio Template">
-    <meta name="keywords" content="Yoga, unica, creative, html">
+    <meta name="description" content="Peach Clothing Website">
+    <meta name="keywords" content="Peach, Clothing, Fashion">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Peach Clothing</title>
@@ -27,11 +28,226 @@
     
 </head>
 
++<style type="text/css">
+
+    .my-input-box {
+        width: 100%;
+        border: 2px solid #454747;
+        border-radius: 50px;
+        height: 53px;
+        background: transparent;
+        color: #535353;
+        font-size: 14px;
+        font-style: italic;
+        font-weight: 600;
+        padding-left: 30px;
+        position: relative;
+    }
+    
+    .my-button {
+        width: 310px;
+        height: 53px;
+        background: #B0BCC2;
+        border: 2px solid #B0BCC2;
+        color: #fff;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 50px;
+        position: absolute;
+    }
+</style>
+
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
+
+
+    <script>
+        var getCart = JSON.parse(localStorage.getItem('userCartInfo'));
+        var shippingFee = 0.00;
+        var cartTotal = 0;
+        var i = 0, count = 0;
+        var totalPay = 0.00;
+        $(document).ready(function () {
+
+            if (localStorage.getItem('userCartInfo') != null) {
+                i = 0;
+                $.each($('.product-input'), function () {
+                    $(this).val(parseInt(getCart[i].qty));
+                    i++;
+                });
+
+                for (i = 0; i < 8; i++) {
+                    var q = parseInt(getCart[i].qty);
+                    var p = parseFloat(getCart[i].price);
+                    var total;
+
+                    if (getCart[8] == true) {
+                        if (i != 1 && i != 4) {
+                            total = q * p;
+                            total *= 0.8;
+                            document.getElementsByClassName('product-close')[i].innerHTML = "(-20%)"
+                        } else {
+                            total = q * p;
+                        }
+                    } else {
+                        total = q * p;
+                    }
+                    cartTotal += total;
+                    document.getElementsByClassName('total')[i].innerHTML = 'RM' + total.toFixed(2);
+                }
+
+                $('#clear-cart').click(function () {
+                    for (i = 0; i < 8; i++) {
+                        getCart[i].qty = 0;
+                    }
+                    localStorage.setItem('userCartInfo', JSON.stringify(getCart));
+                    getCart = JSON.parse(localStorage.getItem('userCartInfo'));
+                    alert("Your cart cleared successfully!");
+                    location.reload();
+                });
+
+                document.getElementById("discountCode").addEventListener('change', function () {
+                    if (document.getElementById('discountCode').value.toUpperCase() == "20OFF") {
+                        getCart[8] = true;
+                        document.getElementById('discountCode').value = "20OFF";
+
+                    } else {
+                        getCart[8] = false;
+                        document.getElementById('discountCode').value = '';
+                    }
+                    localStorage.setItem('userCartInfo', JSON.stringify(getCart));
+                    getCart = JSON.parse(localStorage.getItem('userCartInfo'));
+
+                    cartTotal = 0.00;
+                    for (i = 0; i < 8; i++) {
+                        var q = parseInt(getCart[i].qty);
+                        var p = parseFloat(getCart[i].price);
+                        var total;
+
+                        if (getCart[8] == true) {
+                            if (i != 1 && i != 4) {
+                                total = q * p;
+                                total *= 0.8;
+                                document.getElementsByClassName('product-close')[i].innerHTML = "(-20%)";
+                            } else {
+                                total = q * p;
+                            }
+                        } else {
+                            total = q * p;
+                            document.getElementsByClassName('product-close')[i].innerHTML = "";
+                        }
+                        cartTotal += total;
+                        document.getElementsByClassName('total')[i].innerHTML = 'RM' + total.toFixed(2);
+                    }
+                    document.getElementById('sub-total').innerHTML = "RM" + cartTotal.toFixed(2);
+                    totalPay = cartTotal + shippingFee;
+                    document.getElementById("totalcart").innerHTML = 'RM' + totalPay.toFixed(2);
+                });
+                if (getCart[8] == true) {
+                    document.getElementById('discountCode').value = "20OFF";
+                }
+                document.getElementById('discountCode').value
+
+                $('#update-cart').bind("click", function () {
+                    for (i = 0; i < 8; i++) {
+                        getCart[i].qty = parseInt(document.getElementsByClassName('product-input')[i].value);
+                    }
+                    localStorage.setItem('userCartInfo', JSON.stringify(getCart));
+                    getCart = JSON.parse(localStorage.getItem('userCartInfo'));
+                    alert("Your cart updated successfully!");
+                    location.reload();
+                });
+            }
+
+            i = 0;
+            $.each($('.hide-check'), function () {
+                if (localStorage.getItem('userCartInfo') == null) {
+                    $(this).hide();
+                    count++;
+                } else if (getCart[i].qty == 0) {
+                    $(this).hide();
+                    count++;
+                }
+                i++;
+            });
+
+            if (count == 8) {
+                $('#cart-list').html("<div class='product-text'><h4>Your shopping cart is empty!</h4></div>");
+            }
+            count = 0;
+
+            total = 0;
+            for (i = 0; i < 8; i++) {
+                var q = parseInt(getCart[i].qty);
+                var p = parseFloat(getCart[i].price);
+                total += (q * p);
+            }
+            document.getElementsByClassName('total')[8].innerHTML = "RM" + total.toFixed(2);
+            document.getElementById('sub-total').innerHTML = "RM" + cartTotal.toFixed(2);
+
+            document.getElementById('one').addEventListener("click", function () {
+                shippingFee = parseFloat(document.getElementById('one').value);
+                totalPay = cartTotal + shippingFee;
+                document.getElementById("shipping").innerHTML = 'RM' + shippingFee.toFixed(2);
+                document.getElementById("totalcart").innerHTML = 'RM' + totalPay.toFixed(2);
+            });
+            document.getElementById('two').addEventListener("click", function () {
+                shippingFee = parseFloat(document.getElementById('two').value);
+                totalPay = cartTotal + shippingFee;
+                document.getElementById("shipping").innerHTML = 'RM' + shippingFee.toFixed(2);
+                document.getElementById("totalcart").innerHTML = 'RM' + totalPay.toFixed(2);
+            });
+            document.getElementById('three').addEventListener("click", function () {
+                shippingFee = parseFloat(document.getElementById('three').value);
+                totalPay = cartTotal + shippingFee;
+                document.getElementById("shipping").innerHTML = 'RM' + shippingFee.toFixed(2);
+                document.getElementById("totalcart").innerHTML = 'RM' + totalPay.toFixed(2);
+            });
+        });
+
+    </script>
+    
+
+
+
+
+     <!--Notification API Begin-->
+     <script>
+        async function subscribe(){
+            function showNotification() {
+            const notification = new Notification("New Message from Peach Clothing.", {
+                body:"Thank you for subscribing our newsletter.",
+                icon :"peach.png"
+            });
+
+            notification.onclick = (e) =>{
+                window.location.href ="https://izzych.github.io/peachclothing.github.io/";
+            }
+            window.alert("Thank you for subscribing to our newsletter! :)");
+        }
+
+
+
+        console.log(Notification.permission);
+
+        if(Notification.permission === "granted"){
+            showNotification();
+        } else if (Notification.permission !== "denied"){
+            Notification.requestPermission().then(permission=>{
+                if(permission ==="granted"){
+                    showNotification();
+                }
+            });
+        }
+    }
+    </script>
+
+    <!--Notification API End-->
     
     <!-- Search model -->
 	<div class="search-model">
@@ -144,22 +360,134 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody id="cart-list">
+                        <tr class="hide-check">
                             <td class="product-col">
-                                <img src="img/product/product-1.jpg" alt="">
+                                <img src="img/products/img-1.jpg" alt="">
                                 <div class="p-title">
-                                    <h5>Blue Dotted Shirt</h5>
+                                    <h5>Jacket - Blue</h5>
                                 </div>
                             </td>
-                            <td class="price-col">$29</td>
+                            <td class="price-col">RM22.90</td>
                             <td class="quantity-col">
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                    <input class="product-input" type="text" value="1">
                                 </div>
                             </td>
-                            <td class="total">$29</td>
-                            <td class="product-close">x</td>
+                            <td class="total"></td>
+                            <td class="product-close"></td>
+                        </tr>
+                        <tr class="hide-check">
+                            <td class="product-col">
+                                <img src="img/products/img-2.jpg" alt="">
+                                <div class="p-title">
+                                    <h5>Maxi Dress - Yellow</h5>
+                                </div>
+                            </td>
+                            <td class="price-col">RM29.90</td>
+                            <td class="quantity-col">
+                                <div class="pro-qty">
+                                    <input class="product-input" type="text" value="1">
+                                </div>
+                            </td>
+                            <td class="total"></td>
+                            <td class="product-close"></td>
+                        </tr>
+                        <tr class="hide-check">
+                            <td class="product-col">
+                                <img src="img/products/img-3.jpg" alt="">
+                                <div class="p-title">
+                                    <h5>Casual Suit Jacket - Black</h5>
+                                </div>
+                            </td>
+                            <td class="price-col">RM29.90</td>
+                            <td class="quantity-col">
+                                <div class="pro-qty">
+                                    <input class="product-input" type="text" value="1">
+                                </div>
+                            </td>
+                            <td class="total"></td>
+                            <td class="product-close"></td>
+                        </tr>
+                        <tr class="hide-check">
+                            <td class="product-col">
+                                <img src="img/products/img-4.jpg" alt="">
+                                <div class="p-title">
+                                    <h5>Plain Color Dress - Light Blue</h5>
+                                </div>
+                            </td>
+                            <td class="price-col">RM15.90</td>
+                            <td class="quantity-col">
+                                <div class="pro-qty">
+                                    <input class="product-input" type="text" value="1">
+                                </div>
+                            </td>
+                            <td class="total"></td>
+                            <td class="product-close"></td>
+                        </tr>
+                        <tr class="hide-check">
+                            <td class="product-col">
+                                <img src="img/products/img-5.jpg" alt="">
+                                <div class="p-title">
+                                    <h5>Stripped Sleeve-less Dress</h5>
+                                </div>
+                            </td>
+                            <td class="price-col">RM22.90</td>
+                            <td class="quantity-col">
+                                <div class="pro-qty">
+                                    <input class="product-input" type="text" value="1">
+                                </div>
+                            </td>
+                            <td class="total"></td>
+                            <td class="product-close"></td>
+                        </tr>
+                        <tr class="hide-check">
+                            <td class="product-col">
+                                <img src="img/products/img-6.jpg" alt="">
+                                <div class="p-title">
+                                    <h5>Strapless Sweater - Peach</h5>
+                                </div>
+                            </td>
+                            <td class="price-col">RM26.90</td>
+                            <td class="quantity-col">
+                                <div class="pro-qty">
+                                    <input class="product-input" type="text" value="1">
+                                </div>
+                            </td>
+                            <td class="total"></td>
+                            <td class="product-close"></td>
+                        </tr>
+                        <tr class="hide-check">
+                            <td class="product-col">
+                                <img src="img/products/img-8.jpg" alt="">
+                                <div class="p-title">
+                                    <h5>Dress with Details - Blue</h5>
+                                </div>
+                            </td>
+                            <td class="price-col">RM19.90</td>
+                            <td class="quantity-col">
+                                <div class="pro-qty">
+                                    <input class="product-input" type="text" value="1">
+                                </div>
+                            </td>
+                            <td class="total"></td>
+                            <td class="product-close"></td>
+                        </tr>
+                        <tr class="hide-check">
+                            <td class="product-col">
+                                <img src="img/products/img-10.jpg" alt="">
+                                <div class="p-title">
+                                    <h5>Jacket with Details - Blue</h5>
+                                </div>
+                            </td>
+                            <td class="price-col">RM33.90</td>
+                            <td class="quantity-col">
+                                <div class="pro-qty">
+                                    <input class="product-input" type="text" value="1">
+                                </div>
+                            </td>
+                            <td class="total"></td>
+                            <td class="product-close"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -168,7 +496,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="coupon-input">
-                            <input type="text" placeholder="Enter cupone code">
+                            <input id="discountCode" type="text" placeholder="Enter coupon code">
                         </div>
                     </div>
                     <div class="col-lg-5 offset-lg-1 text-left text-lg-right">
@@ -186,22 +514,22 @@
                             <h5>Choose a shipping</h5>
                             <div class="chose-shipping">
                                 <div class="cs-item">
-                                    <input type="radio" name="cs" id="one">
-                                    <label for="one" class="active">
-                                        Free Standard shhipping
-                                        <span>Estimate for New York</span>
+                                    <input value="2.00" type="radio" name="cs" id="one">
+                                    <label for="one">
+                                        Standard shipping - RM2.00
+                                        <span>Delivered in 10-14 days</span>
                                     </label>
                                 </div>
                                 <div class="cs-item">
-                                    <input type="radio" name="cs" id="two">
+                                    <input value="10.00" type="radio" name="cs" id="two">
                                     <label for="two">
-                                        Next Day delievery $10
+                                        Pos Laju - RM10.00
                                     </label>
                                 </div>
                                 <div class="cs-item last">
-                                    <input type="radio" name="cs" id="three">
+                                    <input value="4.30" type="radio" name="cs" id="three">
                                     <label for="three">
-                                        In Store Pickup - Free
+                                        Ninja Van - RM4.30
                                     </label>
                                 </div>
                             </div>
@@ -219,10 +547,10 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="total">$29</td>
-                                            <td class="sub-total">$29</td>
-                                            <td class="shipping">$10</td>
-                                            <td class="total-cart-p">$39</td>
+                                            <td class="total"></td>
+                                            <td id="sub-total" class="sub-total"></td>
+                                            <td id="shipping" class="shipping"></td>
+                                            <td id="totalcart" class="total-cart-p"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -245,11 +573,9 @@
         <div class="container">
             <div class="newslatter-form">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <form action="#">
-                            <input type="text" placeholder="Your email address">
-                            <button type="submit">Subscribe to our newsletter</button>
-                        </form>
+                    <div action="#">
+                        <input class="my-input-box" type="text" placeholder="Your email address">
+                        <button class="my-button" type="submit" onclick="subscribe()">Subscribe to our newsletter</button>
                     </div>
                 </div>
             </div>
