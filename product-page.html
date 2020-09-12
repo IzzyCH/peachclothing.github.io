@@ -69,73 +69,9 @@
         <div class="loader"></div>
     </div>
     
-    <script>
-        var userCartInfo = [];
 
-        var product1_info = new Object();
-        product1_info.price = 22.90;
-        if (product1_info.qty != 0) {
-            product1_info.qty = 0;
-        }
-        userCartInfo.push(product1_info);
 
-        var product2_info = new Object();
-        product2_info.price = 29.90;
-        if (product2_info.qty != 0) {
-            product2_info.qty = 0;
-        }
-        userCartInfo.push(product2_info);
 
-        var product3_info = new Object();
-        product3_info.price = 29.90;
-        if (product3_info.qty != 0) {
-            product3_info.qty = 0;
-        }
-        userCartInfo.push(product3_info);
-
-        var product4_info = new Object();
-        product4_info.price = 15.90;
-        if (product4_info.qty != 0) {
-            product4_info.qty = 0;
-        }
-        userCartInfo.push(product4_info);
-
-        var product5_info = new Object();
-        product5_info.price = 22.90;
-        if (product5_info.qty != 0) {
-            product5_info.qty = 0;
-        }
-        userCartInfo.push(product5_info);
-
-        var product6_info = new Object();
-        product6_info.price = 26.90;
-        if (product6_info.qty != 0) {
-            product6_info.qty = 0;
-        }
-        userCartInfo.push(product6_info);
-
-        var product7_info = new Object();
-        product7_info.price = 19.90;
-        if (product7_info.qty != 0) {
-            product7_info.qty = 0;
-        }
-        userCartInfo.push(product7_info);
-
-        var product8_info = new Object();
-        product8_info.price = 33.90;
-        if (product8_info.qty != 0) {
-            product8_info.qty = 0;
-        }
-        userCartInfo.push(product8_info);
-
-        var coupunExist = false;
-        userCartinfo.push(coupunExist);
-        if (localStorage.getItem('userCartInfo') == null) {
-            localStorage.setItem('userCartInfo', JSON.stringify(userCartInfo));
-        }
-    </script>
-
-    
  <!--Notification API Begin-->
  <script>
     async function subscribe(){
@@ -476,6 +412,74 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
         <script src="main.js"></script>
+
+
+
+        <script>
+            var userCartInfo = [];
+    
+            var product1_info = new Object();
+            product1_info.price = 22.90;
+            if (product1_info.qty != 0) {
+                product1_info.qty = 0;
+            }
+            userCartInfo.push(product1_info);
+    
+            var product2_info = new Object();
+            product2_info.price = 29.90;
+            if (product2_info.qty != 0) {
+                product2_info.qty = 0;
+            }
+            userCartInfo.push(product2_info);
+    
+            var product3_info = new Object();
+            product3_info.price = 29.90;
+            if (product3_info.qty != 0) {
+                product3_info.qty = 0;
+            }
+            userCartInfo.push(product3_info);
+    
+            var product4_info = new Object();
+            product4_info.price = 15.90;
+            if (product4_info.qty != 0) {
+                product4_info.qty = 0;
+            }
+            userCartInfo.push(product4_info);
+    
+            var product5_info = new Object();
+            product5_info.price = 22.90;
+            if (product5_info.qty != 0) {
+                product5_info.qty = 0;
+            }
+            userCartInfo.push(product5_info);
+    
+            var product6_info = new Object();
+            product6_info.price = 26.90;
+            if (product6_info.qty != 0) {
+                product6_info.qty = 0;
+            }
+            userCartInfo.push(product6_info);
+    
+            var product7_info = new Object();
+            product7_info.price = 19.90;
+            if (product7_info.qty != 0) {
+                product7_info.qty = 0;
+            }
+            userCartInfo.push(product7_info);
+    
+            var product8_info = new Object();
+            product8_info.price = 33.90;
+            if (product8_info.qty != 0) {
+                product8_info.qty = 0;
+            }
+            userCartInfo.push(product8_info);
+    
+            var coupunExist = false;
+            userCartinfo.push(coupunExist);
+            if (localStorage.getItem('userCartInfo') == null) {
+                localStorage.setItem('userCartInfo', JSON.stringify(userCartInfo));
+            }
+        </script>
     </body>
     
     </html>

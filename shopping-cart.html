@@ -66,156 +66,6 @@
     </div>
 
 
-    <script>
-        var getCart = JSON.parse(localStorage.getItem('userCartInfo'));
-        var shippingFee = 0.00;
-        var cartTotal = 0;
-        var i = 0, count = 0;
-        var totalPay = 0.00;
-        $(document).ready(function () {
-
-            if (localStorage.getItem('userCartInfo') != null) {
-                i = 0;
-                $.each($('.product-input'), function () {
-                    $(this).val(parseInt(getCart[i].qty));
-                    i++;
-                });
-
-                for (i = 0; i < 8; i++) {
-                    var q = parseInt(getCart[i].qty);
-                    var p = parseFloat(getCart[i].price);
-                    var total;
-
-                    if (getCart[8] == true) {
-                        if (i != 1 && i != 4) {
-                            total = q * p;
-                            total *= 0.8;
-                            document.getElementsByClassName('product-close')[i].innerHTML = "(-20%)"
-                        } else {
-                            total = q * p;
-                        }
-                    } else {
-                        total = q * p;
-                    }
-                    cartTotal += total;
-                    document.getElementsByClassName('total')[i].innerHTML = 'RM' + total.toFixed(2);
-                }
-
-                $('#clear-cart').click(function () {
-                    for (i = 0; i < 8; i++) {
-                        getCart[i].qty = 0;
-                    }
-                    localStorage.setItem('userCartInfo', JSON.stringify(getCart));
-                    getCart = JSON.parse(localStorage.getItem('userCartInfo'));
-                    alert("Your cart cleared successfully!");
-                    location.reload();
-                });
-
-                document.getElementById("discountCode").addEventListener('change', function () {
-                    if (document.getElementById('discountCode').value.toUpperCase() == "20OFF") {
-                        getCart[8] = true;
-                        document.getElementById('discountCode').value = "20OFF";
-
-                    } else {
-                        getCart[8] = false;
-                        document.getElementById('discountCode').value = '';
-                    }
-                    localStorage.setItem('userCartInfo', JSON.stringify(getCart));
-                    getCart = JSON.parse(localStorage.getItem('userCartInfo'));
-
-                    cartTotal = 0.00;
-                    for (i = 0; i < 8; i++) {
-                        var q = parseInt(getCart[i].qty);
-                        var p = parseFloat(getCart[i].price);
-                        var total;
-
-                        if (getCart[8] == true) {
-                            if (i != 1 && i != 4) {
-                                total = q * p;
-                                total *= 0.8;
-                                document.getElementsByClassName('product-close')[i].innerHTML = "(-20%)";
-                            } else {
-                                total = q * p;
-                            }
-                        } else {
-                            total = q * p;
-                            document.getElementsByClassName('product-close')[i].innerHTML = "";
-                        }
-                        cartTotal += total;
-                        document.getElementsByClassName('total')[i].innerHTML = 'RM' + total.toFixed(2);
-                    }
-                    document.getElementById('sub-total').innerHTML = "RM" + cartTotal.toFixed(2);
-                    totalPay = cartTotal + shippingFee;
-                    document.getElementById("totalcart").innerHTML = 'RM' + totalPay.toFixed(2);
-                });
-                if (getCart[8] == true) {
-                    document.getElementById('discountCode').value = "20OFF";
-                }
-                document.getElementById('discountCode').value
-
-                $('#update-cart').bind("click", function () {
-                    for (i = 0; i < 8; i++) {
-                        getCart[i].qty = parseInt(document.getElementsByClassName('product-input')[i].value);
-                    }
-                    localStorage.setItem('userCartInfo', JSON.stringify(getCart));
-                    getCart = JSON.parse(localStorage.getItem('userCartInfo'));
-                    alert("Your cart updated successfully!");
-                    location.reload();
-                });
-            }
-
-            i = 0;
-            $.each($('.hide-check'), function () {
-                if (localStorage.getItem('userCartInfo') == null) {
-                    $(this).hide();
-                    count++;
-                } else if (getCart[i].qty == 0) {
-                    $(this).hide();
-                    count++;
-                }
-                i++;
-            });
-
-            if (count == 8) {
-                $('#cart-list').html("<div class='product-text'><h4>Your shopping cart is empty!</h4></div>");
-            }
-            count = 0;
-
-            total = 0;
-            for (i = 0; i < 8; i++) {
-                var q = parseInt(getCart[i].qty);
-                var p = parseFloat(getCart[i].price);
-                total += (q * p);
-            }
-            document.getElementsByClassName('total')[8].innerHTML = "RM" + total.toFixed(2);
-            document.getElementById('sub-total').innerHTML = "RM" + cartTotal.toFixed(2);
-
-            document.getElementById('one').addEventListener("click", function () {
-                shippingFee = parseFloat(document.getElementById('one').value);
-                totalPay = cartTotal + shippingFee;
-                document.getElementById("shipping").innerHTML = 'RM' + shippingFee.toFixed(2);
-                document.getElementById("totalcart").innerHTML = 'RM' + totalPay.toFixed(2);
-            });
-            document.getElementById('two').addEventListener("click", function () {
-                shippingFee = parseFloat(document.getElementById('two').value);
-                totalPay = cartTotal + shippingFee;
-                document.getElementById("shipping").innerHTML = 'RM' + shippingFee.toFixed(2);
-                document.getElementById("totalcart").innerHTML = 'RM' + totalPay.toFixed(2);
-            });
-            document.getElementById('three').addEventListener("click", function () {
-                shippingFee = parseFloat(document.getElementById('three').value);
-                totalPay = cartTotal + shippingFee;
-                document.getElementById("shipping").innerHTML = 'RM' + shippingFee.toFixed(2);
-                document.getElementById("totalcart").innerHTML = 'RM' + totalPay.toFixed(2);
-            });
-        });
-
-    </script>
-    
-
-
-
-
      <!--Notification API Begin-->
      <script>
         async function subscribe(){
@@ -664,6 +514,153 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
     <script src="main.js"></script>
+
+
+    <script>
+        var getCart = JSON.parse(localStorage.getItem('userCartInfo'));
+        var shippingFee = 0.00;
+        var cartTotal = 0;
+        var i = 0, count = 0;
+        var totalPay = 0.00;
+        $(document).ready(function () {
+
+            if (localStorage.getItem('userCartInfo') != null) {
+                i = 0;
+                $.each($('.product-input'), function () {
+                    $(this).val(parseInt(getCart[i].qty));
+                    i++;
+                });
+
+                for (i = 0; i < 8; i++) {
+                    var q = parseInt(getCart[i].qty);
+                    var p = parseFloat(getCart[i].price);
+                    var total;
+
+                    if (getCart[8] == true) {
+                        if (i != 1 && i != 4) {
+                            total = q * p;
+                            total *= 0.8;
+                            document.getElementsByClassName('product-close')[i].innerHTML = "(-20%)"
+                        } else {
+                            total = q * p;
+                        }
+                    } else {
+                        total = q * p;
+                    }
+                    cartTotal += total;
+                    document.getElementsByClassName('total')[i].innerHTML = 'RM' + total.toFixed(2);
+                }
+
+                $('#clear-cart').click(function () {
+                    for (i = 0; i < 8; i++) {
+                        getCart[i].qty = 0;
+                    }
+                    localStorage.setItem('userCartInfo', JSON.stringify(getCart));
+                    getCart = JSON.parse(localStorage.getItem('userCartInfo'));
+                    alert("Your cart cleared successfully!");
+                    location.reload();
+                });
+
+                document.getElementById("discountCode").addEventListener('change', function () {
+                    if (document.getElementById('discountCode').value.toUpperCase() == "20OFF") {
+                        getCart[8] = true;
+                        document.getElementById('discountCode').value = "20OFF";
+
+                    } else {
+                        getCart[8] = false;
+                        document.getElementById('discountCode').value = '';
+                    }
+                    localStorage.setItem('userCartInfo', JSON.stringify(getCart));
+                    getCart = JSON.parse(localStorage.getItem('userCartInfo'));
+
+                    cartTotal = 0.00;
+                    for (i = 0; i < 8; i++) {
+                        var q = parseInt(getCart[i].qty);
+                        var p = parseFloat(getCart[i].price);
+                        var total;
+
+                        if (getCart[8] == true) {
+                            if (i != 1 && i != 4) {
+                                total = q * p;
+                                total *= 0.8;
+                                document.getElementsByClassName('product-close')[i].innerHTML = "(-20%)";
+                            } else {
+                                total = q * p;
+                            }
+                        } else {
+                            total = q * p;
+                            document.getElementsByClassName('product-close')[i].innerHTML = "";
+                        }
+                        cartTotal += total;
+                        document.getElementsByClassName('total')[i].innerHTML = 'RM' + total.toFixed(2);
+                    }
+                    document.getElementById('sub-total').innerHTML = "RM" + cartTotal.toFixed(2);
+                    totalPay = cartTotal + shippingFee;
+                    document.getElementById("totalcart").innerHTML = 'RM' + totalPay.toFixed(2);
+                });
+                if (getCart[8] == true) {
+                    document.getElementById('discountCode').value = "20OFF";
+                }
+                document.getElementById('discountCode').value
+
+                $('#update-cart').bind("click", function () {
+                    for (i = 0; i < 8; i++) {
+                        getCart[i].qty = parseInt(document.getElementsByClassName('product-input')[i].value);
+                    }
+                    localStorage.setItem('userCartInfo', JSON.stringify(getCart));
+                    getCart = JSON.parse(localStorage.getItem('userCartInfo'));
+                    alert("Your cart updated successfully!");
+                    location.reload();
+                });
+            }
+
+            i = 0;
+            $.each($('.hide-check'), function () {
+                if (localStorage.getItem('userCartInfo') == null) {
+                    $(this).hide();
+                    count++;
+                } else if (getCart[i].qty == 0) {
+                    $(this).hide();
+                    count++;
+                }
+                i++;
+            });
+
+            if (count == 8) {
+                $('#cart-list').html("<div class='product-text'><h4>Your shopping cart is empty!</h4></div>");
+            }
+            count = 0;
+
+            total = 0;
+            for (i = 0; i < 8; i++) {
+                var q = parseInt(getCart[i].qty);
+                var p = parseFloat(getCart[i].price);
+                total += (q * p);
+            }
+            document.getElementsByClassName('total')[8].innerHTML = "RM" + total.toFixed(2);
+            document.getElementById('sub-total').innerHTML = "RM" + cartTotal.toFixed(2);
+
+            document.getElementById('one').addEventListener("click", function () {
+                shippingFee = parseFloat(document.getElementById('one').value);
+                totalPay = cartTotal + shippingFee;
+                document.getElementById("shipping").innerHTML = 'RM' + shippingFee.toFixed(2);
+                document.getElementById("totalcart").innerHTML = 'RM' + totalPay.toFixed(2);
+            });
+            document.getElementById('two').addEventListener("click", function () {
+                shippingFee = parseFloat(document.getElementById('two').value);
+                totalPay = cartTotal + shippingFee;
+                document.getElementById("shipping").innerHTML = 'RM' + shippingFee.toFixed(2);
+                document.getElementById("totalcart").innerHTML = 'RM' + totalPay.toFixed(2);
+            });
+            document.getElementById('three').addEventListener("click", function () {
+                shippingFee = parseFloat(document.getElementById('three').value);
+                totalPay = cartTotal + shippingFee;
+                document.getElementById("shipping").innerHTML = 'RM' + shippingFee.toFixed(2);
+                document.getElementById("totalcart").innerHTML = 'RM' + totalPay.toFixed(2);
+            });
+        });
+
+    </script>
 </body>
 
 </html>
