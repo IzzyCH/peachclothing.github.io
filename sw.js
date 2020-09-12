@@ -6,7 +6,14 @@ const staticAssets = [
     './manifest.webmanifest',
     './about-us.html',
     './peach.png',
-    './peachword.png'
+    './peachword.png',
+    './checkout.html',
+    './categories.html',
+    './img/products/img1.jpg',
+    './img/products/img2.jpg',
+    './img/products/img3.jpg',
+    './img/products/img4.jpg',
+    './img/products/img5.jpg'
 
 ]
 

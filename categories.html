@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
+    <META HTTP-EQUIV='Content-Security-Policy' CONTENT="default-src 'self' *; script-src 'self' 'unsafe-inline' *; style-src 'self' 'unsafe-inline' *; img-src 'self' *; media-src 'self' *; frame-src *;">
     <meta charset="UTF-8">
-    <meta name="description" content="Yoga Studio Template">
-    <meta name="keywords" content="Yoga, unica, creative, html">
+    <meta name="description" content="Peach Clothing Website">
+    <meta name="keywords" content="Peach, Clothing, Fashion">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Peach Clothing</title>
@@ -23,7 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="style.css" type="text/css">
 
-    <link rel="tab icon" type="image/png" href="https://icons.iconarchive.com/icons/google/noto-emoji-food-drink/256/32352-peach-icon.png">
+    <link rel="tab icon" type="image/png" href="peach.png">
     
 </head>
 
@@ -33,6 +34,40 @@
         <div class="loader"></div>
     </div>
     
+    <!--Notification API Begin-->
+    <script>
+        async function subscribe(){
+            function showNotification() {
+            const notification = new Notification("New Message from Peach Clothing.", {
+                body:"Thank you for subscribing our newsletter.",
+                icon :"peach.png"
+            });
+
+            notification.onclick = (e) =>{
+                window.location.href ="https://izzych.github.io/peachclothing.github.io/";
+            }
+            window.alert("Thank you for subscribing to our newsletter! :)");
+        }
+
+
+
+        console.log(Notification.permission);
+
+        if(Notification.permission === "granted"){
+            showNotification();
+        } else if (Notification.permission !== "denied"){
+            Notification.requestPermission().then(permission=>{
+                if(permission ==="granted"){
+                    showNotification();
+                }
+            });
+        }
+    }
+    </script>
+
+    <!--Notification API End-->
+
+
     <!-- Search model -->
 	<div class="search-model">
 		<div class="h-100 d-flex align-items-center justify-content-center">
@@ -114,17 +149,18 @@
     <section class="page-add">
         <div class="container">
             <div class="row">
+                <div class="col-lg-8">
+                    <img src="img/sale.jpg" width ="300" height="150" alt="">
+                </div>
                 <div class="col-lg-4">
                     <div class="page-breadcrumb">
-                        <h2>Dresses<span>.</span></h2>
+                        <h2>Categories<span>.</span></h2>
                         <a href="#">Home</a>
-                        <a href="#">Dresses</a>
-                        <a class="active" href="#">Night Dresses</a>
+                        <a href="#">Shirt</a>
+                        <a class="active" href="#">Formal Shirt</a>
                     </div>
                 </div>
-                <div class="col-lg-8">
-                    <img src="img/add.jpg" alt="">
-                </div>
+                
             </div>
         </div>
     </section>
@@ -146,6 +182,12 @@
                                         <option value="">Price</option>
                                     </select>
                                 </form>
+                                <form action="#">
+                                    <select class="Gender">
+                                        <option value="">Male</option>
+                                        <option value="">Female</option>
+                                    </select>
+                                </form>
                             </div>
                             <div class="cf-right">
                                 <span>20 Products</span>
@@ -161,18 +203,18 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="single-product-item">
                         <figure>
-                            <img src="img/products/img-9.jpg" alt="">
+                            <img src="img/products/img1.jpg" alt="">
                             <div class="p-status">new</div>
                             <div class="hover-icon">
-                                <a href="img/products/img-9.jpg" class="pop-up"><img src="img/icons/zoom-plus.png"
+                                <a href="img/products/img1.jpg" class="pop-up"><img src="img/icons/zoom-plus.png"
                                         alt=""></a>
                             </div>
                         </figure>
                         <div class="product-text">
                             <a href="#">
-                                <h6>Green Dress with details</h6>
+                                <h6>Arrow New York</h6>
                             </a>
-                            <p>$22.90</p>
+                            <p>RM69.90</p>
                         </div>
                     </div>
                 </div>
@@ -181,235 +223,98 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="single-product-item">
                                 <figure>
-                                    <img src="img/products/img-2.jpg" alt="">
+                                    <img src="img/products/img2.jpg" alt="">
                                     <div class="p-status sale">sale</div>
+                                    <div class="hover-icon">
+                                        <a href="img/products/img3.jpg" class="pop-up"><img
+                                                src="img/icons/zoom-plus.png" alt=""></a>
+                                    </div>
                                 </figure>
                                 <div class="product-text">
                                     <a href="#">
-                                        <h6>Yellow Maxi Dress</h6>
+                                        <h6>Navy Blue</h6>
                                     </a>
-                                    <p>$25.90</p>
+                                    <p>RM59.90</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="single-product-item">
                                 <figure>
-                                    <img src="img/products/img-3.jpg" alt="">
+                                    <img src="img/products/img3.jpg" alt="">
                                     <div class="p-status">new</div>
                                     <div class="hover-icon">
-                                        <a href="img/products/img-3.jpg" class="pop-up"><img
+                                        <a href="img/products/img3.jpg" class="pop-up"><img
                                                 src="img/icons/zoom-plus.png" alt=""></a>
                                     </div>
                                 </figure>
                                 <div class="product-text">
                                     <a href="#">
-                                        <h6>One piece bodysuit</h6>
+                                        <h6>Peter England Grey</h6>
                                     </a>
-                                    <p>$19.90</p>
+                                    <p>RM69.90</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="single-product-item">
                                 <figure>
-                                    <img src="img/products/img-6.jpg" alt="">
+                                    <img src="img/products/img4.jpg" alt="">
                                     <div class="p-status sale">sale</div>
-                                </figure>
-                                <div class="product-text">
-                                    <a href="#">
-                                        <h6>Yellow Maxi Dress</h6>
-                                    </a>
-                                    <p>$25.90</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single-product-item">
-                                <figure>
-                                    <img src="img/products/img-1.jpg" alt="">
                                     <div class="hover-icon">
-                                        <a href="img/products/img-1.jpg" class="pop-up"><img
+                                        <a href="img/products/img4.jpg" class="pop-up"><img
                                                 src="img/icons/zoom-plus.png" alt=""></a>
                                     </div>
                                 </figure>
                                 <div class="product-text">
                                     <a href="#">
-                                        <h6>One piece bodysuit</h6>
+                                        <h6>Knighthood</h6>
                                     </a>
-                                    <p>$19.90</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="img/products/img-5.jpg" alt="">
-                            <div class="p-status">new</div>
-                            <div class="hover-icon">
-                                <a href="img/products/img-5.jpg" class="pop-up"><img src="img/icons/zoom-plus.png"
-                                        alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Green Dress with details</h6>
-                            </a>
-                            <p>$22.90</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="img/products/img-4.jpg" alt="">
-                            <div class="p-status popular">popular</div>
-                            <div class="hover-icon">
-                                <a href="img/products/img-4.jpg" class="pop-up"><img src="img/icons/zoom-plus.png"
-                                        alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Blue Dress with details</h6>
-                            </a>
-                            <p>$35.50</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="img/products/img-8.jpg" alt="">
-                            <div class="p-status popular">popular</div>
-                            <div class="hover-icon">
-                                <a href="img/products/img-8.jpg" class="pop-up"><img src="img/icons/zoom-plus.png"
-                                        alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Blue Dress with details</h6>
-                            </a>
-                            <p>$35.50</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="img/products/img-10.jpg" alt="">
-                            <div class="p-status popular">popular</div>
-                            <div class="hover-icon">
-                                <a href="img/products/img-10.jpg" class="pop-up"><img src="img/icons/zoom-plus.png"
-                                        alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Blue Dress with details</h6>
-                            </a>
-                            <p>$35.50</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single-product-item">
-                                <figure>
-                                    <img src="img/products/img-11.jpg" alt="">
-                                    <div class="p-status sale">sale</div>
-                                </figure>
-                                <div class="product-text">
-                                    <a href="#">
-                                        <h6>Yellow Maxi Dress</h6>
-                                    </a>
-                                    <p>$25.50</p>
+                                    <p>RM59.90</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="single-product-item">
                                 <figure>
-                                    <img src="img/products/img-12.jpg" alt="">
-                                    <div class="p-status">new</div>
+                                    <img src="img/products/img5.jpg" alt="">
                                     <div class="hover-icon">
-                                        <a href="img/products/img-12.jpg" class="pop-up"><img
+                                        <a href="img/products/img5.jpg" class="pop-up"><img
                                                 src="img/icons/zoom-plus.png" alt=""></a>
                                     </div>
                                 </figure>
                                 <div class="product-text">
                                     <a href="#">
-                                        <h6>One piece bodysuit</h6>
+                                        <h6>Cotton Plain</h6>
                                     </a>
-                                    <p>$19.90</p>
+                                    <p>RM59.90</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single-product-item">
-                                <figure>
-                                    <img src="img/products/img-14.jpg" alt="">
-                                    <div class="p-status sale">sale</div>
-                                </figure>
-                                <div class="product-text">
-                                    <a href="#">
-                                        <h6>Yellow Maxi Dress</h6>
-                                    </a>
-                                    <p>$25.90</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single-product-item">
-                                <figure>
-                                    <img src="img/products/img-15.jpg" alt="">
-                                    <div class="hover-icon">
-                                        <a href="img/products/img-15.jpg" class="pop-up"><img
-                                                src="img/icons/zoom-plus.png" alt=""></a>
-                                    </div>
-                                </figure>
-                                <div class="product-text">
-                                    <a href="#">
-                                        <h6>One piece bodysuit</h6>
-                                    </a>
-                                    <p>$19.90</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="img/products/img-13.jpg" alt="">
-                            <div class="p-status">new</div>
-                            <div class="hover-icon">
-                                <a href="img/products/img-13.jpg" class="pop-up"><img src="img/icons/zoom-plus.png"
-                                        alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Green Dress with details</h6>
-                            </a>
-                            <p>$22.90</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="more-product">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <a href="#" class="primary-btn">Load More</a>
                     </div>
                 </div>
             </div>
         </div>
+    
+
+    <!--Start of Tawk.to Script-->
+
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5f5c98454704467e89ee5a73/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+
+    <!--End of Tawk.to Script-->
     </section>
+
+    
     <!-- Categories Page Section End -->
 
         <!-- Footer Section Begin -->
@@ -417,12 +322,10 @@
             <div class="container">
                 <div class="newslatter-form">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <form action="#">
-                                <input type="text" placeholder="Your email address">
-                                <button type="submit">Subscribe to our newsletter</button>
-                            </form>
-                        </div>
+                        <div action="#">
+                        <input class="my-input-box" type="text" placeholder="Your email address">
+                        <button class="my-button" type="submit" onclick="subscribe()">Subscribe to our newsletter</button>
+                    </div>
                     </div>
                 </div>
                 <div class="footer-widget">
