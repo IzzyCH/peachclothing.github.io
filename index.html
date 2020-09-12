@@ -82,27 +82,16 @@
     <script>
         async function subscribe(){
             function showNotification() {
-                async function getSubName(){
-                    
-                    var text = document.getElementByTagName("input")[0].value;
+            const notification = new Notification("New Message from Peach Clothing.", {
+                body:"Thank you for subscribing our newsletter.",
+                icon :"peach.png"
+            });
 
-                    return text;
-                }
-
-                var subName = new Notification();
-                subName = ("New Message from Peach Clothing.",{
-                    body:"getSub",
-                    icon:"peach.png"
-                });
-
-                const notification = new Notification("New Message from Peach Clothing.", {
-                    body:"Thank you for subscribing our newsletter.",
-                    icon :"peach.png"
-                });
-                notification.onclick = (e) =>{
-                    window.location.href ="https://izzych.github.io/peachclothing.github.io/://google.com";
-                }
+            notification.onclick = (e) =>{
+                window.location.href ="https://izzych.github.io/peachclothing.github.io/";
             }
+            window.alert("Thank you for subscribing to our newsletter! :)");
+        }
 
 
 
