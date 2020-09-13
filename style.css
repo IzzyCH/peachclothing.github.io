@@ -982,7 +982,7 @@ ol {
 }
 
 .social-links a {
-	margin-right: 88px;
+	margin-right: 20px;
 	display: inline-block;
 }
 
@@ -1002,7 +1002,7 @@ ol {
 
 .social-links a span {
 	display: inline-block;
-	font-size: 12px;
+	font-size: 19px;
 	font-weight: 400;
 	text-transform: uppercase;
 	color: #9f9fa0;

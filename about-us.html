@@ -402,7 +402,7 @@
                 </div>
             </div>
         </div>
-        <div class="social-links-warp">"text-align:center" 
+        <div class="social-links-warp">
 			<div class="container">
 				<div class="social-links">
 					
@@ -435,6 +435,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
     <script src="main.js"></script>
+	<script type="text/javascript">
+    (function () {
+        var options = {
+            facebook: "110581847452161", // Facebook page ID
+			whatsapp: "+601111924818", // WhatsApp number
+            instagram: "peachclothing996", // Instagram username
+            call_to_action: "Live Chat here !!", // Call to action
+            button_color: "#FF6550", // Color of button
+            position: "right", // Position may be 'right' or 'left'
+            order: "instagram,whatsapp", // Order of buttons
+        };
+        var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+    })();
+</script>
 	
 </body>
 
