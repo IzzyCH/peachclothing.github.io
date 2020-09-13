@@ -114,6 +114,41 @@
     <div id="preloder">
         <div class="loader"></div>
     </div>
+
+
+     <!--Notification API Begin-->
+     <script>
+        async function subscribe(){
+            function showNotification() {
+            const notification = new Notification("New Message from Peach Clothing.", {
+                body:"Thank you for subscribing our newsletter.",
+                icon :"peach.png"
+            });
+
+            notification.onclick = (e) =>{
+                window.location.href ="https://izzych.github.io/peachclothing.github.io/";
+            }
+            window.alert("Thank you for subscribing to our newsletter! :)");
+        }
+
+
+
+        console.log(Notification.permission);
+
+        if(Notification.permission === "granted"){
+            showNotification();
+        } else if (Notification.permission !== "denied"){
+            Notification.requestPermission().then(permission=>{
+                if(permission ==="granted"){
+                    showNotification();
+                }
+            });
+        }
+    }
+    </script>
+
+    <!--Notification API End-->
+    
     
     <!-- Search model -->
 	<div class="search-model">
