@@ -26,9 +26,19 @@
 
     <link rel="tab icon" type="image/png" href="https://icons.iconarchive.com/icons/google/noto-emoji-food-drink/256/32352-peach-icon.png">
     
+	<!--WZ-->
+	<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-messaging.js"></script>
+	<script src="form.js"> </script>
+    <script src="form.js"> </script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="wz/push.min.js"></script>
+	<script src="wz/serviceWorker.min.js"></script>
+	
 </head>
 
-+<style type="text/css">
+<style type="text/css">
 
     .my-input-box {
         width: 100%;
@@ -57,6 +67,48 @@
         border-radius: 50px;
         position: absolute;
     }
+	
+.button {
+  border-radius: 3px;
+  background-color: #b1bcc2;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 12px;
+  padding: 1px;
+  width: 80px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 1x;
+  position:center;
+
+  
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 17px;
+}
+
+.button:hover span:after {
+  opacity: 0.3;
+  right: 0;
+}
 </style>
 
 <body>
@@ -127,8 +179,12 @@
                     </a>
                 </div>
                 <div class="user-access">
-                    <a href="#">Register</a>
-                    <a href="#" class="in">Sign in</a>
+                    <input type="email" placeholder="email" id="email"/>
+					<input type="password" placeholder="password" id="password"/>
+					<br>
+					<button class="button" onclick="signUp()" id="signUp"> <span> Sign Up  </span> </button>
+					<button class="button" onclick="signIn()" id="signIn"> <span>Sign In </span> </button>
+					<button class="button" onclick="signOut()" id="signOut"> <span>Sign Out </span> </button>
                 </div>
                 <nav class="main-menu mobile-menu">
                     <ul>

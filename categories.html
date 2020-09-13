@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <META HTTP-EQUIV='Content-Security-Policy' CONTENT="default-src 'self' *; script-src 'self' 'unsafe-inline' *; style-src 'self' 'unsafe-inline' *; img-src 'self' *; media-src 'self' *; frame-src *;">
     <meta charset="UTF-8">
     <meta name="description" content="Peach Clothing Website">
@@ -25,6 +26,11 @@
     <link rel="stylesheet" href="style.css" type="text/css">
 
     <link rel="tab icon" type="image/png" href="peach.png">
+	
+	<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-messaging.js"></script>
+	<script src="form.js"> </script>
     
 </head>
 
@@ -57,6 +63,48 @@
         border-radius: 50px;
         position: absolute;
     }
+
+.button {
+  border-radius: 3px;
+  background-color: #b1bcc2;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 12px;
+  padding: 1px;
+  width: 80px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 1x;
+  position:center;
+
+  
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 17px;
+}
+
+.button:hover span:after {
+  opacity: 0.3;
+  right: 0;
+}
     </style>
 
 
@@ -129,8 +177,12 @@
                     </a>
                 </div>
                 <div class="user-access">
-                    <a href="#">Register</a>
-                    <a href="#" class="in">Sign in</a>
+                    <input type="email" placeholder="email" id="email"/>
+					<input type="password" placeholder="password" id="password"/>
+					<br>
+					<button class="button" onclick="signUp()" id="signUp"> <span> Sign Up  </span> </button>
+					<button class="button" onclick="signIn()" id="signIn"> <span>Sign In </span> </button>
+					<button class="button" onclick="signOut()" id="signOut"> <span>Sign Out </span> </button>
                 </div>
                 <nav class="main-menu mobile-menu">
                     <ul>
@@ -446,6 +498,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
         <script src="main.js"></script>
+		<script src="form.js"> </script>
+	
     </body>
     
     </html>
